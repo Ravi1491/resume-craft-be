@@ -1,4 +1,4 @@
-<h1 align="center"> Comms Planner Backend </h1>     
+<h1 align="center"> Resume Craft Backend </h1>     
 
 <div align="center">
 
