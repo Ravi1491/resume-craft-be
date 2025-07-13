@@ -23,25 +23,31 @@ export async function bootstrap(): Promise<void> {
     app.enableShutdownHooks();
     app.use(responseTime());
 
-    const apiDocUri = `${API_BASE_PATH}/docs/api`;
-    const swaggerSetupOptions: SwaggerCustomOptions = {
-        jsonDocumentUrl: `${apiDocUri}/json`,
-        yamlDocumentUrl: `${apiDocUri}/yaml`,
-    };
+    // Generate Swagger documentation only in non-production environments unless explicitly enabled via ENABLE_SWAGGER=true
+    const enableSwagger = process.env.NODE_ENV !== 'prod';
+    console.log('NODE_ENV', process.env.NODE_ENV, enableSwagger);
 
-    const swaggerDocument = SwaggerModule.createDocument(
-        app,
-        configureSwaggerWithTags(
-            new DocumentBuilder()
-                .setTitle('Resume Craft Mgmt Documentation')
-                .setDescription(
-                    'This REST API provides a comprehensive set of endpoints for managing resume craft operations'
-                )
-                .setVersion('1.0')
-        ).build(),
-        {}
-    );
-    SwaggerModule.setup(apiDocUri, app, swaggerDocument, swaggerSetupOptions);
+    if (enableSwagger) {
+        const apiDocUri = `${API_BASE_PATH}/docs/api`;
+        const swaggerSetupOptions: SwaggerCustomOptions = {
+            jsonDocumentUrl: `${apiDocUri}/json`,
+            yamlDocumentUrl: `${apiDocUri}/yaml`,
+        };
+
+        const swaggerDocument = SwaggerModule.createDocument(
+            app,
+            configureSwaggerWithTags(
+                new DocumentBuilder()
+                    .setTitle('Resume Craft Mgmt Documentation')
+                    .setDescription(
+                        'This REST API provides a comprehensive set of endpoints for managing resume craft operations'
+                    )
+                    .setVersion('1.0')
+            ).build(),
+            {}
+        );
+        SwaggerModule.setup(apiDocUri, app, swaggerDocument, swaggerSetupOptions);
+    }
 
     await app.listen(PORT);
     console.log(`App started successfully at port: ${PORT}`);

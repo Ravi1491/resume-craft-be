@@ -7,7 +7,7 @@ import { ConfigurationModule } from '../configuration';
 import { User, UserSchema } from './models';
 import { DbService, MongooseConfigService, UserDbService } from './services';
 
-mongoose.set('debug', true);
+mongoose.set('debug', process.env.NODE_ENV !== 'prod');
 
 @Global()
 @Module({
