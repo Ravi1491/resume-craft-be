@@ -13,27 +13,20 @@ export class MongooseConfigService implements MongooseOptionsFactory {
     }
 
     async createMongooseOptions(): Promise<MongooseModuleOptions> {
-        const config = this.configurationService.getConfig();
-        const { SERVICE_NAME } = process.env;
-
-        const { DB_HOST = '', DB_NAME = '', DB_USER_NAME = '', DB_PASSWORD = '' } = process.env;
-        const uri = `${DB_HOST.replace('DB_USER_NAME', DB_USER_NAME).replace('DB_PASSWORD', DB_PASSWORD)}/${DB_NAME}`;
+        const { DB_HOST = '', DB_NAME = '' } = process.env;
+        const uri = `${DB_HOST}/${DB_NAME}`;
 
         this.logger.debug({
             DB_DATA: {
                 DB_HOST: DB_HOST,
                 DB_NAME: DB_NAME,
-                DB_USER_NAME: DB_USER_NAME,
-                SERVICE_NAME,
             },
         });
 
         return {
             uri,
-            user: DB_USER_NAME,
-            pass: DB_PASSWORD,
             dbName: DB_NAME,
-            appName: SERVICE_NAME,
+            appName: 'resume-craft-mgmt-app',
             readPreference: 'secondaryPreferred',
             maxPoolSize: 50,
             minPoolSize: 10,

@@ -60,6 +60,6 @@ export function _setAuditAttributes(offset = 0) {
 }
 
 export function buildMongoUri(): string {
-    const { DB_HOST = '', DB_NAME = '', DB_USER_NAME = '', DB_PASSWORD = '' } = process.env;
-    return `${DB_HOST.replace('DB_USER_NAME', DB_USER_NAME).replace('DB_PASSWORD', DB_PASSWORD)}/${DB_NAME}`;
+    const { DB_HOST = '', DB_NAME = '' } = process.env;
+    return `${DB_HOST}/${DB_NAME}`;
 }

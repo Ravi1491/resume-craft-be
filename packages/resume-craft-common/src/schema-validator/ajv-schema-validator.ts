@@ -388,9 +388,6 @@ export const ajvSchemaValidator = <T extends TSchema>(
             ...(options?.debug && { rawErrors: validateFn.errors || null }),
         };
     } catch (error) {
-        if (!process.env.TEST) {
-            console.error('[CommsPlannerCommon] Schema validation error:', error);
-        }
         return {
             isValid: false,
             errors: [{ field: '_schema', message: 'Invalid schema configuration' }],

@@ -22,9 +22,6 @@ export const BaseConfig: Config = {
     port: +process.env.PORT,
     dataSource: {
         host: process.env.DB_HOST,
-        port: +process.env.DB_PORT || 27017,
         database: process.env.DB_NAME,
-        username: process.env.DB_USER_NAME || 'yummy',
-        password: process.env.DB_PASSWORD || 'yummy',
     },
 };

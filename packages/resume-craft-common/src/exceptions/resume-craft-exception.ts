@@ -37,9 +37,6 @@ export class ResumeCraftException extends HttpException {
         };
 
         logger.error(errorDetailsInJson);
-        if (!process.env.TEST) {
-            logger.error({ message, cause, details, statusCode: errDetails.httpStatus });
-        }
         super(
             {
                 message: message || errMessage,
