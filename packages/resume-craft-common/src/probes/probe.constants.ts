@@ -1,0 +1,1 @@
+export const PROBE_OPTION_TOKEN = 'PROBES_OPTIONS';

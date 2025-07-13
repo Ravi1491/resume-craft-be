@@ -1,0 +1,62 @@
+{
+  "name": "@resume/resume-craft-api-contracts",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TypeScript API contracts and validation schemas for Resume Craft platform",
+  "keywords": ["resume-craft", "api", "contracts", "validation", "typescript"],
+  "author": "Resume Craft Team",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "module": "dist/esm/index.mjs",
+  "types": "dist/esm/index.d.ts",
+  "main": "dist/cjs/index.cjs",
+  "exports": {
+    ".": {
+      "types": "./dist/esm/index.d.ts",
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/cjs/index.cjs"
+    },
+    "./constants": {
+      "types": "./dist/esm/constants/index.d.ts",
+      "import": "./dist/esm/constants/index.mjs",
+      "require": "./dist/cjs/constants/index.cjs"
+    },
+    "./contracts": {
+      "types": "./dist/esm/contracts/index.d.ts",
+      "import": "./dist/esm/contracts/index.mjs",
+      "require": "./dist/cjs/contracts/index.cjs"
+    },
+    "./helpers": {
+      "types": "./dist/esm/helpers/index.d.ts",
+      "import": "./dist/esm/helpers/index.mjs",
+      "require": "./dist/cjs/helpers/index.cjs"
+    }
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "clean": "git clean -xdf node_modules",
+    "pre-commit": "lint-staged",
+    "pre-push": "tsc && pnpm run test",
+    "dev": "rollup -c -w",
+    "test": "jest -c jest.config.js",
+    "test:watch": "jest -c jest.config.js --watch",
+    "test:cov": "jest -c jest.config.js --coverage",
+    "test:low": "NODE_OPTIONS=' --max-old-space-size=3048' jest -c jest.config.js",
+    "test:cov:low": "NODE_OPTIONS=' --max-old-space-size=3048' jest -c jest.config.js --coverage",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint --fix ./src",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@sinclair/typebox": "^0.31.28",
+    "ajv": "^8.17.1",
+    "ajv-errors": "^3.0.0",
+    "ajv-formats": "^3.0.1"
+  }
+}

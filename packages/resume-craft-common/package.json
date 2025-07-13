@@ -1,0 +1,69 @@
+{
+  "name": "@resume/resume-craft-common",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Common NestJS modules, utilities, and services for Resume Craft platform",
+  "keywords": ["resume-craft", "nestjs", "common", "utilities", "typescript"],
+  "author": "Resume Craft Team",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "module": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "main": "dist/main.js",
+  "exports": {
+    ".": {
+      "types": "./dist/main.d.ts",
+      "import": "./dist/main.js",
+      "require": "./dist/main.js"
+    }
+  },
+  "scripts": {
+    "build": "nest build",
+    "clean": "git clean -xdf node_modules",
+    "clean:workspaces": "turbo run clean",
+    "dev": "nodemon",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "pre-commit": "lint-staged",
+    "pre-push": "tsc && pnpm run test",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint --fix ./src",
+    "type-check": "tsc --noEmit",
+    "test": "TEST=true DOTENV_CONFIG_PATH=../../.env-sample jest -c jest.config.js",
+    "test:watch": "TEST=true DOTENV_CONFIG_PATH=../../.env-sample jest -c jest.config.js --watch",
+    "test:cov": "TEST=true DOTENV_CONFIG_PATH=../../.env-sample jest -c jest.config.js --coverage",
+    "test:low": "TEST=true DOTENV_CONFIG_PATH=../../.env-sample NODE_OPTIONS=' --max-old-space-size=3048' jest -c jest.config.js",
+    "test:cov:low": "TEST=true DOTENV_CONFIG_PATH=../../.env-sample NODE_OPTIONS=' --max-old-space-size=3048' jest -c jest.config.js --coverage"
+  },
+  "peerDependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.533.0",
+    "@aws-sdk/cloudfront-signer": "^3.734.0",
+    "@nestjs/common": "^10.0.0",
+    "@nestjs/config": "^3.2.3",
+    "@nestjs/mongoose": "^10.0.10",
+    "@nestjs/terminus": "^10.2.3",
+    "@nestjs/testing": "^10.0.0",
+    "aws-sdk": "^2.1692.0",
+    "bson": "^6.10.3",
+    "mongodb": "^6.13.1",
+    "mongoose": "^8.10.2"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.726.0",
+    "@aws-sdk/s3-request-presigner": "^3.726.1",
+    "@nestjs/cache-manager": "^2.3.0",
+    "@resume/resume-craft-api-contracts": "workspace:*",
+    "cache-manager": "^5.7.6",
+    "cache-manager-ioredis-yet": "^2.1.1",
+    "ioredis": "^5.4.1",
+    "js-yaml": "^4.1.0",
+    "slugify": "^1.6.6"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9"
+  }
+}

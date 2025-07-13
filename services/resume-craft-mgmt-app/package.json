@@ -1,0 +1,41 @@
+{
+  "name": "resume-craft-mgmt-app",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Resume Craft Management App - Main REST API handling core Resume Craft platform functionality",
+  "keywords": ["resume-craft", "nestjs", "api", "management", "typescript"],
+  "author": "Resume Craft Team",
+  "license": "MIT",
+  "main": "dist/main.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "nest build",
+    "clean": "rm -rf .turbo node_modules coverage",
+    "dev": "LOCAL=true PORT=4000 nest start --watch",
+    "start": "node dist/main.js",
+    "start:dev": "LOCAL=true PORT=4000 nest start --watch",
+    "start:debug": "LOCAL=true PORT=4000 nest start --debug --watch",
+    "start:prod": "node dist/main.js",
+    "lint": "eslint ./src",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "lint:fix": "eslint --fix ./src",
+    "type-check": "tsc --noEmit",
+    "test": "TEST=true DOTENV_CONFIG_PATH=../../.env-sample jest -c jest.config.js",
+    "test:watch": "TEST=true DOTENV_CONFIG_PATH=../../.env-sample jest -c jest.config.js --watch",
+    "test:cov": "TEST=true DOTENV_CONFIG_PATH=../../.env-sample jest -c jest.config.js --coverage",
+    "test:low": "TEST=true DOTENV_CONFIG_PATH=../../.env-sample NODE_OPTIONS=' --max-old-space-size=3048' jest -c jest.config.js",
+    "test:cov:low": "TEST=true DOTENV_CONFIG_PATH=../../.env-sample NODE_OPTIONS=' --max-old-space-size=3048' jest -c jest.config.js --coverage",
+    "test:e2e": "TEST=true DOTENV_CONFIG_PATH=../../.env-sample jest -c jest.config.js --testMatch=\"**/*.e2e-spec.ts\"",
+    "migrate": "ts-node -r tsconfig-paths/register src/dbops/changelogs/index.ts up",
+    "migrate:up": "LOCAL=true ts-node -r tsconfig-paths/register src/dbops/changelogs/index.ts up",
+    "migrate:down": "LOCAL=true ts-node -r tsconfig-paths/register src/dbops/changelogs/index.ts down",
+    "migrate:create": "LOCAL=true ts-node -r tsconfig-paths/register src/dbops/changelogs/index.ts new",
+    "generate": "NODE_ENV=production NODE_OPTIONS='--max-old-space-size=8049 --expose-gc' ts-node -r tsconfig-paths/register src/dbops/fabricator/index.ts"
+  },
+  "dependencies": {
+    "@resume/resume-craft-common": "workspace:*",
+    "@resume/resume-craft-api-contracts": "workspace:*"
+  }
+}

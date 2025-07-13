@@ -1,0 +1,42 @@
+# Why should we use .gitattributes file, see https://dev.to/deadlybyte/please-add-gitattributes-to-your-git-repository-1jld
+
+# Common settings that generally should always be used with your language specific settings
+# See: https://github.com/alexkaratarakis/gitattributes/blob/master/Common.gitattributes
+
+# Auto detect text files and perform LF normalization
+* text=auto eol=lf
+
+# Source code
+*.ts text
+*.js text
+*.json text
+*.cjs text
+
+# Config files
+.env* text
+.prettierrc text
+.eslintrc text
+*.yaml text
+*.yml text
+sonar-project.properties text
+commitlint.config.cjs text
+prettier.config.cjs text
+
+# Documentation
+*.md text diff=markdown
+CONTRIBUTING.md text
+LICENSE text
+
+# Docker
+Dockerfile text
+Dockerfile.local text
+.dockerignore text
+docker-compose*.yml text
+
+# Lock files (treat as binary to prevent line ending issues)
+pnpm-lock.yaml binary
+
+# Binary files
+*.png binary
+*.jpg binary
+*.ico binary

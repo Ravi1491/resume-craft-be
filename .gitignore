@@ -1,0 +1,35 @@
+# Build and output directories
+dist/
+coverage/
+.turbo/
+
+# Dependencies
+node_modules/
+.pnpm-store/
+npm-debug.log*
+pnpm-debug.log*
+
+# Generated files
+*.d.ts
+*.js.map
+*.tsbuildinfo
+.eslintcache
+
+# Config files
+.env
+.env.*
+!.env.example
+!.env-sample
+
+# IDE
+.idea/
+
+# OS files
+.DS_Store
+.scannerwork/
+
+# Test coverage
+.nyc_output/
+.jest-cache
+.cursor
+!/.vscode/

@@ -1,0 +1,13 @@
+{
+  "release-type": "node",
+  "packages": {
+    "packages/resume-craft-api-contracts": {
+      "package-name": "resume-craft-api-contracts",
+      "changelog-path": "CHANGELOG.md"
+    },
+    "packages/resume-craft-common": {
+      "package-name": "resume-craft-common",
+      "changelog-path": "CHANGELOG.md"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+# Build and output directories
+dist/
+coverage/
+.turbo/
+
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Package files
+pnpm-lock.yaml
+
+# Generated files
+*.d.ts
+*.js.map
+*.tsbuildinfo
+
+# Docker and dev files
+dev/
+Dockerfile*
+docker-compose*.yml
+
+# Config files
+.env*
+!.env.example
+!.env-sample
+.release-please-manifest.json
+sonar-project.properties
+
+# IDE
+.idea/
+.vscode/
+
+# Git files
+.husky/
+.git/
+.gitattributes
+.gitignore
+
+# Documentation
+CONTRIBUTING.md
+LICENSE
